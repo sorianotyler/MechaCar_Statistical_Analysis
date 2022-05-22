@@ -8,3 +8,10 @@ suspension_coil <- read.csv(file='Suspension_Coil.csv')
 total_summary <- summarize(suspension_coil, Mean=mean(PSI),Median=median(PSI),Varience=var(PSI),SD=sd(PSI))
 lot_summary <- suspension_coil %>% group_by(Manufacturing_Lot) %>% 
 summarize(Mean=mean(PSI),Median=median(PSI),Varience=var(PSI),SD=sd(PSI), .groups = "keep")#create summary table with multiple columns
+t.test(suspension_coil['PSI'], mu=1500)
+lot1_data <- subset(suspension_coil, Manufacturing_Lot=='Lot1')
+lot2_data <- subset(suspension_coil, Manufacturing_Lot=='Lot2')
+lot3_data <- subset(suspension_coil, Manufacturing_Lot=='Lot3')
+t.test(lot1_data['PSI'], mu=1500)
+t.test(lot2_data['PSI'], mu=1500)
+t.test(lot3_data['PSI'], mu=1500)
